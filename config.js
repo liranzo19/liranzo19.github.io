@@ -13,7 +13,7 @@ const CONFIG = {
 
   // Correo de tu cuenta PayPal (la que recibe el dinero).
   // Debe ser una cuenta PayPal real (no la de Sandbox/Developer).
-  paypalEmail: "ramonliranzo19@gmail.com.com",
+  paypalEmail: "ramonliranzo19@gmail.com",
 
   // PayPal no cobra en pesos dominicanos, por eso se usa USD.
   moneda: "USD",
