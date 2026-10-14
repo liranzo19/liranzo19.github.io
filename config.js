@@ -15,6 +15,11 @@ const CONFIG = {
   // Debe ser una cuenta PayPal real (no la de Sandbox/Developer).
   paypalEmail: "ramonliranzo19@gmail.com",
 
+  // Client ID de PRODUCCIÓN (Live) de tu app en developer.paypal.com.
+  // Con él aparecen los botones "PayPal" y "Tarjeta de débito o crédito".
+  // Si lo dejas así, se usa el botón clásico de PayPal (con paypalEmail).
+  paypalClientId: "BAAL3G1oNhw5XBu3X-N2sRUKsVAtdgpKXiuIP_Vj6yjy3DdcADBaI0WZRhNtTeeyt190S35DaDL8Ph2QUg",
+
   // PayPal no cobra en pesos dominicanos, por eso se usa USD.
   moneda: "USD",
 
