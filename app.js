@@ -121,6 +121,31 @@
     }
   }
 
+  // Descargas
+  const D = C.descargas || {};
+  const sinConfigurar = u => !u || /TU_USUARIO|TU_REPOSITORIO/.test(u);
+  const dlBtn = document.getElementById("dl-btn");
+  if (dlBtn) {
+    const meta = [D.liranposVersion && "Versión " + D.liranposVersion, D.liranposTamano].filter(Boolean).join(" · ");
+    document.getElementById("dl-meta").textContent = meta || "Instalador para Windows";
+    if (sinConfigurar(D.liranposUrl)) {
+      dlBtn.textContent = "Pedir instalador por WhatsApp";
+      dlBtn.href = waLink("Hola, quiero el instalador de LiranPos.");
+      dlBtn.target = "_blank";
+    } else {
+      dlBtn.href = D.liranposUrl;
+    }
+  }
+  const foodBtn = document.getElementById("food-btn");
+  if (foodBtn) {
+    if (sinConfigurar(D.foodUrl)) {
+      foodBtn.textContent = "Pedir acceso por WhatsApp";
+      foodBtn.href = waLink("Hola, quiero acceso a LiranPos Food.");
+    } else {
+      foodBtn.href = D.foodUrl;
+    }
+  }
+
   // Cerrar menú móvil al tocar un enlace
   document.querySelectorAll("#menu a").forEach(a =>
     a.addEventListener("click", () => document.getElementById("menu").classList.remove("open")));

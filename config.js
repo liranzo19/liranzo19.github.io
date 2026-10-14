@@ -8,12 +8,12 @@ const CONFIG = {
   // Ejemplo RD: 18095551234
   whatsapp: "18293951985",
 
-  correo: "Ventasliranpos@gmail.com.com",
+  correo: "ventasliranpos@gmail.com.com",
   horario: "Lunes a sábado, 8:00 a.m. – 6:00 p.m.",
 
   // Correo de tu cuenta PayPal (la que recibe el dinero).
   // Debe ser una cuenta PayPal real (no la de Sandbox/Developer).
-  paypalEmail: "ramonliranzo19@gmail.com",
+  paypalEmail: "ramonliranzo19@gmail.com.com",
 
   // PayPal no cobra en pesos dominicanos, por eso se usa USD.
   moneda: "USD",
@@ -61,10 +61,23 @@ const CONFIG = {
   banco: [
     { label: "Banco",            valor: "Banreservas" },
     { label: "Tipo de cuenta",   valor: "Ahorros" },
-    { label: "Número de cuenta", valor: "960" },
+    { label: "Número de cuenta", valor: "9607230367" },
     { label: "A nombre de",      valor: "Ramon Arturo Liranzo" },
-    { label: "Cédula / RNC",     valor: "000-0000000-0" }
+    { label: "Cédula / RNC",     valor: "preguntar por Whatsap" }
   ],
+
+  // Descargas
+  descargas: {
+    // Enlace del instalador en GitHub Releases. Con "latest" siempre
+    // descarga la última versión que publiques. Cambia TU_USUARIO,
+    // TU_REPOSITORIO y el nombre del .exe por los tuyos.
+    liranposUrl: "https://github.com/liranzo19/liranzo19.github.io/releases/latest/download/LiranPos-Instalador-3.5.1.exe",
+    liranposVersion: "3.5.1",
+    liranposTamano: "41.6 MB",
+
+    // Dirección donde tus clientes entran a LiranPos Food
+    foodUrl: "https://liranzo.pythonanywhere.com"
+  },
 
   // Capturas de pantalla: guarda tus imágenes en la carpeta "img"
   // con estos nombres (o cambia los nombres aquí). Formato .png o .jpg.

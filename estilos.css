@@ -215,3 +215,16 @@ a.c-card:hover{border-color:var(--ink)}
 .ok-msg{display:none;background:#e6f7ee;color:#137a43;padding:12px 16px;border-radius:10px;font-weight:600}
 .ok-msg.show{display:block}
 @media (max-width:860px){.contact-grid,.row2{grid-template-columns:1fr}}
+
+/* Descargas */
+.dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.dl-card{background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);border-radius:22px;padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.dl-food{border-top-color:var(--food)}
+.dl-card h3{font-size:28px}
+.dl-meta{color:var(--muted);margin-top:-6px}
+.btn-food{background:var(--food);color:#fff}
+.btn-food:hover{filter:brightness(.95)}
+.dl-steps{padding-left:20px;color:var(--muted);font-size:15px;display:grid;gap:6px;margin-top:4px}
+.dl-steps a{color:var(--amber-d)}
+.dl-warn{font-size:13px;color:var(--muted);background:var(--bg2);border-radius:10px;padding:10px 14px}
+@media (max-width:860px){.dl-grid{grid-template-columns:1fr}}
