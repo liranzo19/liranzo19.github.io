@@ -71,9 +71,9 @@ const CONFIG = {
   // producto: "liranpos" o "food"
   capturas: [
     { producto: "liranpos", img: "img/liranpos-ventas.jpg",     titulo: "Pantalla de ventas" },
-    { producto: "liranpos", img: "img/liranpos-inventario.png", titulo: "Inventario y productos" },
-    { producto: "liranpos", img: "img/liranpos-cierre.png",     titulo: "Cierre de caja" },
-    { producto: "liranpos", img: "img/liranpos-bar.png",        titulo: "Modo Drink / Bar" },
+    { producto: "liranpos", img: "img/liranpos-inventario.jpg", titulo: "Inventario y productos" },
+    { producto: "liranpos", img: "img/liranpos-cierre.jpg",     titulo: "Cierre de caja" },
+    { producto: "liranpos", img: "img/liranpos-bar.jpg",        titulo: "Modo Drink / Bar" },
     { producto: "food",     img: "img/food-ventas.jpg",         titulo: "Punto de venta web" },
     { producto: "food",     img: "img/food-delivery.jpg",       titulo: "Pedidos de delivery" },
     { producto: "food",     img: "img/food-celular.jpg",        titulo: "App en el celular" }
