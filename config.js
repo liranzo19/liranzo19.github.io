@@ -70,7 +70,7 @@ const CONFIG = {
   // con estos nombres (o cambia los nombres aquí). Formato .png o .jpg.
   // producto: "liranpos" o "food"
   capturas: [
-    { producto: "liranpos", img: "img/liranpos-ventas.png",     titulo: "Pantalla de ventas" },
+    { producto: "liranpos", img: "img/liranpos-ventas.jpg",     titulo: "Pantalla de ventas" },
     { producto: "liranpos", img: "img/liranpos-inventario.png", titulo: "Inventario y productos" },
     { producto: "liranpos", img: "img/liranpos-cierre.png",     titulo: "Cierre de caja" },
     { producto: "liranpos", img: "img/liranpos-bar.png",        titulo: "Modo Drink / Bar" },
