@@ -61,9 +61,9 @@ const CONFIG = {
   banco: [
     { label: "Banco",            valor: "Banreservas" },
     { label: "Tipo de cuenta",   valor: "Ahorros" },
-    { label: "Número de cuenta", valor: "9607230367" },
+    { label: "Número de cuenta", valor: "960" },
     { label: "A nombre de",      valor: "Ramon Arturo Liranzo" },
-    { label: "Cédula / RNC",     valor: "068" }
+    { label: "Cédula / RNC",     valor: "000-0000000-0" }
   ],
 
   // Capturas de pantalla: guarda tus imágenes en la carpeta "img"
@@ -82,5 +82,3 @@ const CONFIG = {
   // (servicio gratuito FormSubmit). La primera vez te llegará un correo
   // para confirmar: ábrelo y haz clic en "Activate Form".
 };
-
-
