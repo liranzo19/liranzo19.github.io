@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Gracias por tu compra! | LiranPos</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in"><a href="index.html" class="logo"><span class="logo-mark">L</span><span>Liran<b>Pos</b></span></a></div></header>
+
+<main class="thanks">
+  <div class="ok">✓</div>
+  <h1>¡Gracias por tu compra!</h1>
+  <p>Si completaste el pago de <b id="prod">tu sistema</b> en PayPal, recibirás un recibo en tu correo. El último paso es enviarnos tus datos por WhatsApp para coordinar la instalación y activar tu licencia: el nombre de tu negocio, tu correo de PayPal y tu RNC si usarás comprobantes fiscales.</p>
+  <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Enviar mis datos por WhatsApp</a>
+  <p style="margin-top:24px"><a href="index.html">Volver al inicio</a></p>
+</main>
+
+<script src="config.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get("p");
+  const p = CONFIG.productos.find(x => x.id === id);
+  const nombre = p ? p.nombre : "LiranPos";
+  document.getElementById("prod").textContent = nombre;
+  document.getElementById("wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" +
+    encodeURIComponent("Hola, acabo de pagar " + nombre + " por PayPal. Mis datos son:\nNegocio: \nCorreo de PayPal: \nRNC (si aplica): ");
+</script>
+</body>
+</html>
