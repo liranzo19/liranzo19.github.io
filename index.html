@@ -18,6 +18,7 @@
     <a href="#inicio" class="logo"><span class="logo-mark">L</span><span>Liran<b>Pos</b></span></a>
     <nav class="links" id="menu">
       <a href="#productos">Productos</a>
+      <a href="#capturas">Capturas</a>
       <a href="#precios">Precios</a>
       <a href="#como-comprar">Cómo comprar</a>
       <a href="#preguntas">Preguntas</a>
@@ -108,6 +109,17 @@
   </div>
 </section>
 
+<!-- ============ CAPTURAS ============ -->
+<section class="sec sec-alt" id="capturas">
+  <div class="wrap">
+    <h2 class="sec-title">Así se ven los sistemas</h2>
+    <p class="sec-sub">Capturas reales de LiranPos y LiranPos Food. Toca una imagen para verla en grande.</p>
+    <div class="tabs" id="cap-tabs"></div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')"><img id="lb-img" alt=""><p id="lb-cap"></p></div>
+
 <!-- ============ COMPARATIVA ============ -->
 <section class="sec sec-alt">
   <div class="wrap">
@@ -187,10 +199,38 @@
 <section class="sec" id="contacto">
   <div class="wrap">
     <h2 class="sec-title">Contacto</h2>
-    <div class="contact">
-      <a class="c-card js-wa" data-msg="Hola, quiero información sobre los sistemas LiranPos." href="#" target="_blank" rel="noopener"><b>WhatsApp</b><span class="js-wa-num"></span></a>
-      <a class="c-card js-mail" href="#"><b>Correo</b><span class="js-mail-txt"></span></a>
-      <div class="c-card"><b>Horario</b><span class="js-horario"></span></div>
+    <p class="sec-sub">Escríbenos por WhatsApp o déjanos tus datos y te contactamos.</p>
+    <div class="contact-grid">
+      <form class="cform" id="cform" method="POST">
+        <div class="ok-msg" id="ok-msg">✓ ¡Mensaje enviado! Te contactaremos pronto.</div>
+        <div class="row2">
+          <label>Nombre<input name="Nombre" required autocomplete="name"></label>
+          <label>Teléfono / WhatsApp<input name="Teléfono" type="tel" required autocomplete="tel"></label>
+        </div>
+        <div class="row2">
+          <label>Correo<input name="email" type="email" autocomplete="email"></label>
+          <label>Nombre del negocio<input name="Negocio"></label>
+        </div>
+        <label>Sistema de interés
+          <select name="Sistema">
+            <option>LiranPos (tiendas, licorerías, drinks)</option>
+            <option>LiranPos Food (restaurantes, food trucks)</option>
+            <option>Paquete con equipos</option>
+            <option>No estoy seguro</option>
+          </select>
+        </label>
+        <label>Mensaje<textarea name="Mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio"></textarea></label>
+        <input type="hidden" name="_subject" value="Nuevo contacto desde la página LiranPos">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" id="f-next">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn btn-primary full" type="submit">Enviar mensaje</button>
+      </form>
+      <div class="contact">
+        <a class="c-card js-wa" data-msg="Hola, quiero información sobre los sistemas LiranPos." href="#" target="_blank" rel="noopener"><b>WhatsApp</b><span class="js-wa-num"></span></a>
+        <a class="c-card js-mail" href="#"><b>Correo</b><span class="js-mail-txt"></span></a>
+        <div class="c-card"><b>Horario</b><span class="js-horario"></span></div>
+      </div>
     </div>
   </div>
 </section>

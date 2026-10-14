@@ -1,0 +1,1 @@
+Guarda aquí tus capturas con los nombres que aparecen en config.js

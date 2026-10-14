@@ -186,3 +186,32 @@ a.c-card:hover{border-color:var(--ink)}
   .feat,.steps,.contact{grid-template-columns:1fr}
   .mock-body{grid-template-columns:1fr}
 }
+
+/* Capturas */
+.tabs{display:flex;justify-content:center;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.tabs button{border:2px solid var(--line);background:#fff;padding:9px 20px;border-radius:99px;font:600 15px Inter,system-ui,sans-serif;cursor:pointer;color:var(--muted)}
+.tabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.gallery figure{margin:0}
+.shot{aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;cursor:zoom-in;display:block;transition:transform .25s}
+.shot img:hover{transform:scale(1.03)}
+.shot-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:var(--muted);font-size:13px;border:2px dashed var(--line);border-radius:14px;padding:12px}
+.shot-empty b{color:var(--ink);font-size:15px}
+.gallery figcaption{margin-top:10px;font-weight:600;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(10,16,30,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;z-index:120;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:85vh;border-radius:10px}
+.lightbox p{color:#fff;margin-top:12px;font-weight:600}
+
+/* Formulario */
+.contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.contact-grid .contact{grid-template-columns:1fr;margin-top:0}
+.cform{border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow);display:grid;gap:14px}
+.cform label{display:grid;gap:6px;font-weight:600;font-size:14px}
+.cform input,.cform select,.cform textarea{font:400 15px Inter,system-ui,sans-serif;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ok-msg{display:none;background:#e6f7ee;color:#137a43;padding:12px 16px;border-radius:10px;font-weight:600}
+.ok-msg.show{display:block}
+@media (max-width:860px){.contact-grid,.row2{grid-template-columns:1fr}}

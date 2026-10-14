@@ -66,6 +66,61 @@
   window.cerrarModal = () => document.getElementById("modal").classList.remove("show");
   document.addEventListener("keydown", e => { if (e.key === "Escape") cerrarModal(); });
 
+  // Protección: no enviar a PayPal si el correo no está configurado
+  const ppMalo = !C.paypalEmail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(C.paypalEmail) ||
+                 /ejemplo|TU_CORREO/i.test(C.paypalEmail);
+  document.addEventListener("submit", e => {
+    if (e.target.action && e.target.action.includes("paypal.com") && ppMalo) {
+      e.preventDefault();
+      alert("El pago con PayPal aún no está configurado. Escríbenos por WhatsApp para completar tu compra.");
+      if (ppMalo) console.warn("Pon el correo de tu cuenta PayPal en config.js (paypalEmail).");
+    }
+  });
+
+  // Galería de capturas
+  const caps = C.capturas || [];
+  const gal = document.getElementById("gallery"), tabs = document.getElementById("cap-tabs");
+  if (gal && caps.length) {
+    const nombres = { liranpos: "LiranPos", food: "LiranPos Food" };
+    const grupos = [...new Set(caps.map(c => c.producto))];
+    const mostrar = prod => {
+      tabs.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.p === prod));
+      gal.innerHTML = "";
+      caps.filter(c => c.producto === prod).forEach(c => {
+        const fig = document.createElement("figure");
+        fig.innerHTML = `<div class="shot"><img src="${c.img}" alt="${c.titulo}" loading="lazy"></div><figcaption>${c.titulo}</figcaption>`;
+        const img = fig.querySelector("img");
+        img.onerror = () => { fig.querySelector(".shot").innerHTML =
+          `<div class="shot-empty"><b>Captura pendiente</b><span>Sube la imagen a<br>${c.img}</span></div>`; };
+        img.onclick = () => {
+          document.getElementById("lb-img").src = c.img;
+          document.getElementById("lb-cap").textContent = c.titulo;
+          document.getElementById("lightbox").classList.add("show");
+        };
+        gal.appendChild(fig);
+      });
+    };
+    grupos.forEach(g => {
+      const b = document.createElement("button");
+      b.textContent = nombres[g] || g; b.dataset.p = g;
+      b.onclick = () => mostrar(g);
+      tabs.appendChild(b);
+    });
+    mostrar(grupos[0]);
+  } else if (gal) {
+    document.getElementById("capturas").style.display = "none";
+  }
+
+  // Formulario de contacto (FormSubmit, gratis)
+  const f = document.getElementById("cform");
+  if (f) {
+    f.action = "https://formsubmit.co/" + C.correo;
+    document.getElementById("f-next").value = base + "index.html?enviado=1#contacto";
+    if (new URLSearchParams(location.search).get("enviado")) {
+      document.getElementById("ok-msg").classList.add("show");
+    }
+  }
+
   // Cerrar menú móvil al tocar un enlace
   document.querySelectorAll("#menu a").forEach(a =>
     a.addEventListener("click", () => document.getElementById("menu").classList.remove("open")));
