@@ -43,7 +43,7 @@ const CONFIG = {
         "Soporte técnico por WhatsApp"
       ]
     },
-    {
+    
       // ---- LiranPos Food: dos planes mensuales ----
     // planId: ID del plan en PayPal (empieza con "P-"). Con él aparecen los
     // botones de PayPal y tarjeta. Si lo dejas así, se usa el botón clásico.
