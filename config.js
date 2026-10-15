@@ -73,7 +73,7 @@ const CONFIG = {
       precio: 35,
       precioRD: 2100,
       mensual: true,
-      planId: "TU_PLAN_ID_AVANZADO",   // pega aquí el ID del plan Avanzado (empieza con "P-")
+      planId: "P-2KD26869UL5260435NLIPQIY",   // pega aquí el ID del plan Avanzado (empieza con "P-")
       destacado: true,
       etiqueta: "Recomendado",
       incluye: [
