@@ -13,7 +13,7 @@ const CONFIG = {
 
   // Correo de tu cuenta PayPal (la que recibe el dinero).
   // Debe ser una cuenta PayPal real (no la de Sandbox/Developer).
-  paypalEmail: "ramonliranzo19@gmail.com",
+  paypalEmail: "ventasliranpos@gmail.com",
 
   // Client ID de PRODUCCIÓN (Live) de tu app en developer.paypal.com.
   // Con él aparecen los botones "PayPal" y "Tarjeta de débito o crédito".
