@@ -44,20 +44,86 @@ const CONFIG = {
       ]
     },
     {
-      id: "food",
-      nombre: "LiranPos Food",
-      subtitulo: "Sistema en la nube · Pago único",
-      precio: 200,
-      precioRD: 12000,
-      porEquipo: false,
-      destacado: true,
+      // ---- LiranPos Food: dos planes mensuales ----
+    // planId: ID del plan en PayPal (empieza con "P-"). Con él aparecen los
+    // botones de PayPal y tarjeta. Si lo dejas así, se usa el botón clásico.
+    {
+      id: "food-basico",
+      nombre: "LiranPos Food Básico",
+      subtitulo: "En la nube · Suscripción mensual",
+      precio: 20,         // en USD, cada mes
+      precioRD: 1200,     // en RD$ por mes (para transferencia)
+      mensual: true,
+      planId: "<div id="paypal-button-container-P-98W36091S24274153NLIPOZQ"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAL3G1oNhw5XBu3X-N2sRUKsVAtdgpKXiuIP_Vj6yjy3DdcADBaI0WZRhNtTeeyt190S35DaDL8Ph2QUg&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-98W36091S24274153NLIPOZQ'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-98W36091S24274153NLIPOZQ'); // Renders the PayPal button
+</script>",
+      destacado: false,
       incluye: [
-        "Acceso desde cualquier dispositivo",
+        "Punto de venta web en cualquier dispositivo",
+        "Ventas, caja y reportes",
+        "Hasta 2 usuarios",
+        "Base de datos propia para tu negocio",
+        "Hospedaje y actualizaciones incluidos",
+        "Configuración, capacitación y soporte",
+        "Sin contrato: cancela cuando quieras"
+      ]
+    },
+    {
+      id: "food-avanzado",
+      nombre: "LiranPos Food Avanzado",
+      subtitulo: "En la nube · Suscripción mensual",
+      precio: 35,
+      precioRD: 2100,
+      mensual: true,
+      planId: "<div id="paypal-button-container-P-2KD26869UL5260435NLIPQIY"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAL3G1oNhw5XBu3X-N2sRUKsVAtdgpKXiuIP_Vj6yjy3DdcADBaI0WZRhNtTeeyt190S35DaDL8Ph2QUg&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-2KD26869UL5260435NLIPQIY'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-2KD26869UL5260435NLIPQIY'); // Renders the PayPal button
+</script>",
+      destacado: true,
+      etiqueta: "Recomendado",
+      incluye: [
+        "Todo lo del plan Básico",
+        "Usuarios y cajas ilimitados",
         "Módulo de delivery con pago PayPal",
         "App instalable con notificaciones",
-        "Base de datos propia para tu negocio",
-        "Hospedaje del sistema incluido",
-        "Configuración, capacitación y soporte"
+        "Comanda y pantalla de turnos",
+        "Módulo de mesero y de repartidor",
+        "Sin contrato: cancela cuando quieras"
       ]
     }
   ],
