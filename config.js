@@ -54,7 +54,27 @@ const CONFIG = {
       precio: 20,         // en USD, cada mes
       precioRD: 1200,     // en RD$ por mes (para transferencia)
       mensual: true,
-      planId: "TU_PLAN_ID_BASICO",
+      planId: "<div id="paypal-button-container-P-98W36091S24274153NLIPOZQ"></div>
+               <script src="https://www.paypal.com/sdk/js?client-id=BAAL3G1oNhw5XBu3X-N2sRUKsVAtdgpKXiuIP_Vj6yjy3DdcADBaI0WZRhNtTeeyt190S35DaDL8Ph2QUg&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+               <script>
+                 paypal.Buttons({
+                     style: {
+                         shape: 'rect',
+                         color: 'gold',
+                         layout: 'vertical',
+                         label: 'subscribe'
+                     },
+                     createSubscription: function(data, actions) {
+                       return actions.subscription.create({
+                         /* Creates the subscription */
+                         plan_id: 'P-98W36091S24274153NLIPOZQ'
+                       });
+                     },
+                     onApprove: function(data, actions) {
+                       alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                     }
+                 }).render('#paypal-button-container-P-98W36091S24274153NLIPOZQ'); // Renders the PayPal button
+               </script>",
       destacado: false,
       incluye: [
         "Punto de venta web en cualquier dispositivo",
@@ -73,7 +93,27 @@ const CONFIG = {
       precio: 35,
       precioRD: 2100,
       mensual: true,
-      planId: "TU_PLAN_ID_AVANZADO",
+      planId: "<div id="paypal-button-container-P-98W36091S24274153NLIPOZQ"></div>
+               <script src="https://www.paypal.com/sdk/js?client-id=BAAL3G1oNhw5XBu3X-N2sRUKsVAtdgpKXiuIP_Vj6yjy3DdcADBaI0WZRhNtTeeyt190S35DaDL8Ph2QUg&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+               <script>
+                 paypal.Buttons({
+                     style: {
+                         shape: 'rect',
+                         color: 'gold',
+                         layout: 'vertical',
+                         label: 'subscribe'
+                     },
+                     createSubscription: function(data, actions) {
+                       return actions.subscription.create({
+                         /* Creates the subscription */
+                         plan_id: 'P-98W36091S24274153NLIPOZQ'
+                       });
+                     },
+                     onApprove: function(data, actions) {
+                       alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                     }
+                 }).render('#paypal-button-container-P-98W36091S24274153NLIPOZQ'); // Renders the PayPal button
+               </script>",
       destacado: true,
       etiqueta: "Recomendado",
       incluye: [
