@@ -14,7 +14,7 @@
 <main class="thanks">
   <div class="ok">✓</div>
   <h1>¡Gracias por tu compra!</h1>
-  <p>Si completaste el pago de <b id="prod">tu sistema</b> en PayPal, recibirás un recibo en tu correo. El último paso es enviarnos tus datos por WhatsApp para coordinar la instalación y activar tu licencia: el nombre de tu negocio, tu correo de PayPal y tu RNC si usarás comprobantes fiscales.</p>
+  <p>Si completaste el pago o la suscripción de <b id="prod">tu sistema</b> en PayPal, recibirás un recibo en tu correo. El último paso es enviarnos tus datos por WhatsApp para coordinar la instalación y activar tu licencia: el nombre de tu negocio, tu correo de PayPal y tu RNC si usarás comprobantes fiscales.</p>
   <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Enviar mis datos por WhatsApp</a>
   <p id="dl-box" style="margin-top:20px;display:none">Mientras tanto, puedes <a id="dl-link" href="#">descargar el instalador</a>. Te enviaremos tu clave de licencia por WhatsApp.</p>
   <p style="margin-top:24px"><a href="index.html">Volver al inicio</a></p>
@@ -27,7 +27,7 @@
   const nombre = p ? p.nombre : "LiranPos";
   document.getElementById("prod").textContent = nombre;
   document.getElementById("wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" +
-    encodeURIComponent("Hola, acabo de pagar " + nombre + " por PayPal. Mis datos son:\nNegocio: \nCorreo de PayPal: \nRNC (si aplica): ");
+    encodeURIComponent((id && id.startsWith("food") ? "Hola, me acabo de suscribir a " : "Hola, acabo de pagar ") + nombre + " por PayPal. Mis datos son:\nNegocio: \nCorreo de PayPal: \nRNC (si aplica): ");
   const u = (CONFIG.descargas || {}).liranposUrl;
   if (id === "liranpos" && u && !/TU_USUARIO|TU_REPOSITORIO/.test(u)) {
     document.getElementById("dl-link").href = u;
