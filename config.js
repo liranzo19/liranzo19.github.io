@@ -103,9 +103,9 @@ const CONFIG = {
     // Enlace del instalador en GitHub Releases. Con "latest" siempre
     // descarga la última versión que publiques. Cambia TU_USUARIO,
     // TU_REPOSITORIO y el nombre del .exe por los tuyos.
-    liranposUrl: "https://github.com/liranzo19/liranzo19.github.io/releases/latest/download/LiranPos-Instalador-3.5.2.exe",
-    liranposVersion: "3.5.2",
-    liranposTamano: "41.6 MB",
+    liranposUrl: "https://github.com/liranzo19/liranzo19.github.io/releases/latest/download/LiranPos-Instalador-3.6.0.exe",
+    liranposVersion: "3.6.0",
+    liranposTamano: "20.8 MB",
 
     // Dirección donde tus clientes entran a LiranPos Food
     foodUrl: "https://liranzo.pythonanywhere.com"
