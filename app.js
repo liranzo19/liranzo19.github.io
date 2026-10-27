@@ -16,16 +16,35 @@
 
   // Tarjetas de precios
   const box = document.getElementById("prices");
+  const anual = p => p.periodo === "anual";
+  const sufijo = p => !p.mensual ? "" : (anual(p) ? " / año" : " / mes");
+  const enPeriodo = p => !p.mensual ? "" : (anual(p) ? " al año" : " al mes");
   if (box) {
+    // Agrupar los planes por producto (campo "grupo")
+    const grupos = [];
+    C.productos.forEach(p => {
+      const g = p.grupo || p.nombre;
+      let gr = grupos.find(x => x.nombre === g);
+      if (!gr) { gr = { nombre: g, items: [] }; grupos.push(gr); }
+      gr.items.push(p);
+    });
+    const destinos = {};
+    grupos.forEach(gr => {
+      const wrap = document.createElement("div");
+      wrap.className = "price-group";
+      wrap.innerHTML = `<h3 class="price-group-title">${gr.nombre}</h3><div class="price-row"></div>`;
+      box.appendChild(wrap);
+      gr.items.forEach(p => destinos[p.id] = wrap.querySelector(".price-row"));
+    });
     C.productos.forEach(p => {
       const card = document.createElement("div");
-      card.className = "price" + (p.destacado ? " featured" : "");
+      card.className = "price" + (p.destacado ? " featured" : "") + (p.id.startsWith("lirauto") ? " auto" : "");
       card.innerHTML = `
         ${p.destacado ? `<span class="ribbon">${p.etiqueta || "Nuevo"}</span>` : ""}
         <h3>${p.nombre}</h3>
         <p class="muted">${p.subtitulo}</p>
-        <div class="amount">${fmtUSD(p.precio)}${p.porEquipo ? '<small> / equipo</small>' : ""}${p.mensual ? '<small> / mes</small>' : ""}</div>
-        ${p.precioRD ? `<p class="rd">o ${fmtRD(p.precioRD)}${p.mensual ? " al mes" : ""} por transferencia</p>` : ""}
+        <div class="amount">${fmtUSD(p.precio)}${p.porEquipo ? '<small> / equipo</small>' : ""}${p.mensual ? `<small>${sufijo(p)}</small>` : ""}</div>
+        ${p.precioRD ? `<p class="rd">o ${fmtRD(p.precioRD)}${enPeriodo(p)} por transferencia</p>` : ""}
         <ul>${p.incluye.map(i => `<li>${i}</li>`).join("")}</ul>
         ${p.porEquipo ? `<label class="qty">Cantidad de equipos
           <span><button type="button" data-q="-1" data-for="${p.id}">−</button><input type="number" min="1" max="50" value="1" id="qty-${p.id}" inputmode="numeric"><button type="button" data-q="1" data-for="${p.id}">+</button></span></label>
@@ -38,7 +57,7 @@
           ${p.mensual ? `<input type="hidden" name="cmd" value="_xclick-subscriptions">
           <input type="hidden" name="a3" value="${p.precio}">
           <input type="hidden" name="p3" value="1">
-          <input type="hidden" name="t3" value="M">
+          <input type="hidden" name="t3" value="${anual(p) ? "Y" : "M"}">
           <input type="hidden" name="src" value="1">
           <input type="hidden" name="sra" value="1">` : `<input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="amount" value="${p.precio}">`}
@@ -54,9 +73,9 @@
         <a class="btn btn-wa-outline full" target="_blank" rel="noopener"
            href="${waLink("Hola, quiero " + (p.mensual ? "suscribirme a " : "comprar ") + p.nombre + ". ¿Cómo coordinamos el pago?")}">Coordinar por WhatsApp</a>
         <p class="secure">${p.mensual
-          ? "Se cobra automáticamente cada mes. Cancela cuando quieras desde tu cuenta PayPal."
+          ? `Se cobra automáticamente cada ${anual(p) ? "año" : "mes"}. Cancela cuando quieras desde tu cuenta PayPal.`
           : "Pago seguro con PayPal o con tu tarjeta de débito o crédito, sin necesidad de cuenta."}</p>`;
-      box.appendChild(card);
+      destinos[p.id].appendChild(card);
     });
   }
 
@@ -162,7 +181,7 @@
     const p = C.productos.find(x => x.id === b.dataset.transfer);
     document.getElementById("m-prod").textContent = p.nombre;
     document.getElementById("m-monto").textContent =
-      (p.precioRD ? fmtRD(p.precioRD) : fmtUSD(p.precio)) + (p.porEquipo ? " por equipo" : "") + (p.mensual ? " al mes" : "");
+      (p.precioRD ? fmtRD(p.precioRD) : fmtUSD(p.precio)) + (p.porEquipo ? " por equipo" : "") + enPeriodo(p);
     document.getElementById("m-bank").innerHTML =
       C.banco.map(r => `<div><span>${r.label}</span><b>${r.valor}</b></div>`).join("");
     document.getElementById("m-wa").href =
@@ -189,7 +208,7 @@
   const caps = C.capturas || [];
   const gal = document.getElementById("gallery"), tabs = document.getElementById("cap-tabs");
   if (gal && caps.length) {
-    const nombres = { liranpos: "LiranPos", food: "LiranPos Food" };
+    const nombres = { liranpos: "LiranPos", food: "LiranPos Food", lirauto: "LirAuto Pro" };
     const grupos = [...new Set(caps.map(c => c.producto))];
     const mostrar = prod => {
       tabs.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.p === prod));
@@ -253,6 +272,27 @@
       foodBtn.href = D.foodUrl;
     }
   }
+
+  // Descargas de LirAuto Pro (Windows y tablet)
+  const enlaceDescarga = (id, url, metaId, meta, msg, txt) => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    const m = document.getElementById(metaId);
+    if (m) m.textContent = meta;
+    if (sinConfigurar(url)) {
+      btn.textContent = txt;
+      btn.href = waLink(msg);
+      btn.target = "_blank";
+    } else {
+      btn.href = url;
+    }
+  };
+  enlaceDescarga("la-btn", D.lirautoUrl, "la-meta",
+    [D.lirautoVersion && "Versión " + D.lirautoVersion, D.lirautoTamano].filter(Boolean).join(" · ") || "Instalador para Windows",
+    "Hola, quiero el instalador de LirAuto Pro.", "Pedir instalador por WhatsApp");
+  enlaceDescarga("la-apk", D.lirautoApkUrl, "la-apk-meta",
+    D.lirautoApkVersion ? "App Android · Versión " + D.lirautoApkVersion : "App Android",
+    "Hola, quiero la app de tablet de LirAuto Pro.", "Pedir app de tablet por WhatsApp");
 
   // Cerrar menú móvil al tocar un enlace
   document.querySelectorAll("#menu a").forEach(a =>

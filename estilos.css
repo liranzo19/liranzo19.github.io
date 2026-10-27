@@ -240,3 +240,21 @@ a.c-card:hover{border-color:var(--ink)}
 .pp-box{min-height:45px}
 
 .pro{display:inline-block;font-size:11px;font-weight:700;color:var(--food);background:#fdeee8;border-radius:99px;padding:2px 8px;vertical-align:middle;margin-left:4px}
+
+/* LirAuto Pro */
+:root{--auto:#2563eb}
+.prod-c{border-top-color:var(--auto)}
+.tag-c{color:var(--auto)}
+.dl-auto{border-top-color:var(--auto)}
+.btn-auto{background:var(--auto);color:#fff}
+.btn-auto:hover{filter:brightness(.95)}
+.dl-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* Precios agrupados por producto */
+.prices{display:block}
+.price-group{margin-top:36px}
+.price-group:first-child{margin-top:0}
+.price-group-title{font-size:22px;margin-bottom:16px;padding-left:4px}
+.price-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;align-items:start}
+.price.featured.auto{border-color:var(--auto)}
+.price.auto .ribbon{background:var(--auto)}

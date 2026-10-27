@@ -28,6 +28,7 @@ const CONFIG = {
   productos: [
     {
       id: "liranpos",
+      grupo: "LiranPos",
       nombre: "LiranPos",
       subtitulo: "Licencia por equipo · Pago único",
       precio: 150,        // en USD
@@ -49,6 +50,7 @@ const CONFIG = {
     // botones de PayPal y tarjeta. Si lo dejas así, se usa el botón clásico.
     {
       id: "food-basico",
+      grupo: "LiranPos Food",
       nombre: "LiranPos Food Básico",
       subtitulo: "En la nube · Suscripción mensual",
       precio: 20,         // en USD, cada mes
@@ -68,6 +70,7 @@ const CONFIG = {
     },
     {
       id: "food-avanzado",
+      grupo: "LiranPos Food",
       nombre: "LiranPos Food Avanzado",
       subtitulo: "En la nube · Suscripción mensual",
       precio: 35,
@@ -84,6 +87,50 @@ const CONFIG = {
         "Comanda y pantalla de turnos",
         "Módulo de mesero y de repartidor",
         "Sin contrato: cancela cuando quieras"
+      ]
+    },
+
+    // ---- LirAuto Pro: sistema para talleres (mensual o anual) ----
+    // periodo: "mes" o "anual". planId: ID del plan en PayPal ("P-...").
+    {
+      id: "lirauto-mensual",
+      grupo: "LirAuto Pro",
+      nombre: "LirAuto Pro Mensual",
+      subtitulo: "Para talleres · Suscripción mensual",
+      precio: 30,         // en USD, cada mes
+      precioRD: 1800,     // en RD$ por mes (para transferencia)
+      mensual: true,
+      periodo: "mes",
+      planId: "TU_PLAN_ID_LIRAUTO_MENSUAL",
+      destacado: false,
+      incluye: [
+        "Órdenes de trabajo y estado de la reparación",
+        "Inventario de piezas y compras",
+        "Cotizaciones y facturación con NCF",
+        "Historial de clientes y vehículos",
+        "App para tablet en el taller",
+        "Actualizaciones y soporte incluidos",
+        "Sin contrato: cancela cuando quieras"
+      ]
+    },
+    {
+      id: "lirauto-anual",
+      grupo: "LirAuto Pro",
+      nombre: "LirAuto Pro Anual",
+      subtitulo: "Para talleres · Suscripción anual",
+      precio: 250,        // en USD, cada año
+      precioRD: 15000,    // en RD$ por año (para transferencia)
+      mensual: true,
+      periodo: "anual",
+      planId: "TU_PLAN_ID_LIRAUTO_ANUAL",
+      destacado: true,
+      etiqueta: "Ahorra US$110",
+      incluye: [
+        "Todo lo del plan mensual",
+        "Equivale a menos de US$21 al mes",
+        "Un solo pago al año",
+        "Actualizaciones y soporte incluidos",
+        "Cancela la renovación cuando quieras"
       ]
     }
   ],
@@ -108,12 +155,20 @@ const CONFIG = {
     liranposTamano: "20.8 MB",
 
     // Dirección donde tus clientes entran a LiranPos Food
-    foodUrl: "https://liranzo.pythonanywhere.com"
+    foodUrl: "https://liranzo.pythonanywhere.com",
+
+    // LirAuto Pro: instalador de Windows y app de tablet (APK de Android).
+    // Súbelos a GitHub Releases con un nombre fijo y pon aquí el enlace.
+    lirautoUrl: "https://github.com/TU_USUARIO/TU_REPOSITORIO/releases/latest/download/LirAutoPro-Instalador.exe",
+    lirautoVersion: "1.0",
+    lirautoTamano: "",
+    lirautoApkUrl: "https://github.com/TU_USUARIO/TU_REPOSITORIO/releases/latest/download/LirAutoPro-Tablet.apk",
+    lirautoApkVersion: "1.0"
   },
 
   // Capturas de pantalla: guarda tus imágenes en la carpeta "img"
   // con estos nombres (o cambia los nombres aquí). Formato .png o .jpg.
-  // producto: "liranpos" o "food"
+  // producto: "liranpos", "food" o "lirauto"
   capturas: [
     { producto: "liranpos", img: "img/liranpos-ventas.jpg",     titulo: "Pantalla de ventas" },
     { producto: "liranpos", img: "img/liranpos-inventario.jpg", titulo: "Inventario y productos" },
@@ -121,7 +176,11 @@ const CONFIG = {
     { producto: "liranpos", img: "img/liranpos-bar.jpg",        titulo: "Modo Drink / Bar" },
     { producto: "food",     img: "img/food-ventas.jpg",         titulo: "Punto de venta web" },
     { producto: "food",     img: "img/food-delivery.jpg",       titulo: "Pedidos de delivery" },
-    { producto: "food",     img: "img/food-celular.jpg",        titulo: "App en el celular" }
+    { producto: "food",     img: "img/food-celular.jpg",        titulo: "App en el celular" },
+    { producto: "lirauto",  img: "img/lirauto-ordenes.jpg",     titulo: "Órdenes de trabajo" },
+    { producto: "lirauto",  img: "img/lirauto-inventario.jpg",  titulo: "Inventario de piezas" },
+    { producto: "lirauto",  img: "img/lirauto-factura.jpg",     titulo: "Cotizaciones y facturas" },
+    { producto: "lirauto",  img: "img/lirauto-tablet.jpg",      titulo: "App para tablet" }
   ]
   // El formulario de contacto envía los mensajes al "correo" de arriba
   // (servicio gratuito FormSubmit). La primera vez te llegará un correo

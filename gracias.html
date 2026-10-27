@@ -27,8 +27,13 @@
   const nombre = p ? p.nombre : "LiranPos";
   document.getElementById("prod").textContent = nombre;
   document.getElementById("wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" +
-    encodeURIComponent((id && id.startsWith("food") ? "Hola, me acabo de suscribir a " : "Hola, acabo de pagar ") + nombre + " por PayPal. Mis datos son:\nNegocio: \nCorreo de PayPal: \nRNC (si aplica): ");
+    encodeURIComponent((id && /^(food|lirauto)/.test(id) ? "Hola, me acabo de suscribir a " : "Hola, acabo de pagar ") + nombre + " por PayPal. Mis datos son:\nNegocio: \nCorreo de PayPal: \nRNC (si aplica): ");
   const u = (CONFIG.descargas || {}).liranposUrl;
+  const D = CONFIG.descargas || {};
+  if (id && id.startsWith("lirauto") && D.lirautoUrl && !/TU_USUARIO|TU_REPOSITORIO/.test(D.lirautoUrl)) {
+    document.getElementById("dl-link").href = D.lirautoUrl;
+    document.getElementById("dl-box").style.display = "block";
+  }
   if (id === "liranpos" && u && !/TU_USUARIO|TU_REPOSITORIO/.test(u)) {
     document.getElementById("dl-link").href = u;
     document.getElementById("dl-box").style.display = "block";
