@@ -177,7 +177,7 @@ const CONFIG = {
     { producto: "food",     img: "img/food-ventas.jpg",         titulo: "Punto de venta web" },
     { producto: "food",     img: "img/food-delivery.jpg",       titulo: "Pedidos de delivery" },
     { producto: "food",     img: "img/food-celular.jpg",        titulo: "App en el celular" },
-    { producto: "lirauto",  img: "img/lirauto-Dashboard.jpg",   titulo: "Dashboard" },
+    { producto: "lirauto",  img: "img/lirauto-dashboard.jpg",   titulo: "Dashboard" },
     { producto: "lirauto",  img: "img/lirauto-inventario.jpg",  titulo: "Inventario de piezas" },
     { producto: "lirauto",  img: "img/lirauto-factura.jpg",     titulo: "Cotizaciones y facturas" },
     { producto: "lirauto",  img: "img/lirauto-tablet.jpg",      titulo: "App para tablet" }
