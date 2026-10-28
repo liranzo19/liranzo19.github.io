@@ -101,7 +101,7 @@ const CONFIG = {
       precioRD: 1800,     // en RD$ por mes (para transferencia)
       mensual: true,
       periodo: "mes",
-      planId: "TU_PLAN_ID_LIRAUTO_MENSUAL",
+      planId: "P-0N046104W9297191JNLRCQ5A",
       destacado: false,
       incluye: [
         "Órdenes de trabajo y estado de la reparación",
@@ -122,7 +122,7 @@ const CONFIG = {
       precioRD: 15000,    // en RD$ por año (para transferencia)
       mensual: true,
       periodo: "anual",
-      planId: "TU_PLAN_ID_LIRAUTO_ANUAL",
+      planId: "P-8F177220P94150032NLRCTII",
       destacado: true,
       etiqueta: "Ahorra US$110",
       incluye: [
