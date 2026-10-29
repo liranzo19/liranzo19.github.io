@@ -241,7 +241,7 @@
   // Formulario de contacto (FormSubmit, gratis)
   const f = document.getElementById("cform");
   if (f) {
-    f.action = "https://formsubmit.co/" + C.correo;
+    f.action = "https://formsubmit.io/" + C.correo;
     document.getElementById("f-next").value = base + "index.html?enviado=1#contacto";
     if (new URLSearchParams(location.search).get("enviado")) {
       document.getElementById("ok-msg").classList.add("show");
